@@ -1,5 +1,10 @@
 package com.zuber.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Motorista {
     private String nomeMotorista;
     private String veiculo;
@@ -9,17 +14,5 @@ public class Motorista {
         this.nomeMotorista = nomeMotorista;
         this.veiculo = veiculo;
         this.cnh = cnh;
-    }
-
-    public String getNomeMotorista() {
-        return nomeMotorista;
-    }
-
-    public String getVeiculo() {
-        return veiculo;
-    }
-
-    public int getCnh() {
-        return cnh;
     }
 }
