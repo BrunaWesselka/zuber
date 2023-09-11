@@ -1,7 +1,10 @@
 package com.zuber.domain;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class MotoristaService {
     public List<Motorista> getMotoristas() {
         List<Motorista> motoristas = new ArrayList<>();
