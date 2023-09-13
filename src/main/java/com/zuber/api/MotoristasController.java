@@ -15,17 +15,17 @@ public class MotoristasController {
     private MotoristaService service;
 
     @GetMapping()
-    public Iterable<Motorista> get() {
+    public Iterable<Motorista> get() {  //TODO: O nome deve fazer sentido, poderia ser "buscarTodosOsMotoristas"
         return service.getMotoristas();
     }
 
     @GetMapping("/{id}")
-    public Optional<Motorista> get(@PathVariable("id") Long id){
+    public Optional<Motorista> get(@PathVariable("id") Long id){ //TODO: devemos retornar um motorista e não um 'Optional' para isso, na service use findById(id).orElse(null);
         return service.getMotoristasById(id);
     }
 
     @PostMapping
-    public String post (@RequestBody Motorista motorista){
+    public String post (@RequestBody Motorista motorista){ //TODO: O nome do método deve fazer sentido para sua ação, no caso se estamos salvando um motorista poderia ser "cadastrarMotorista"
         Motorista m = service.save(motorista);
         return "Motorista salvo com sucesso: " + m.getId();
     }

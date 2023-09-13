@@ -13,13 +13,15 @@ import java.util.Optional;
 public class MotoristaService {
 
     @Autowired
-    private MotoristaRepository rep;
+    private MotoristaRepository rep; //TODO: Evitar nomes curtos assim, o nome deve ser claro, porque poderia ter 4 repositorios
 
+    //TODO: Ao longo do fluxo os nomes podem fazer  sentido
+    // Exemplo, se na controle chama "buscarMotoristas" na service pode ter o mesmo nome
     public Iterable<Motorista> getMotoristas() {
         return rep.findAll();
     }
 
-    public Optional<Motorista> getMotoristasById(Long id) {
+    public Optional<Motorista> getMotoristasById(Long id) { //TODO: O idioma deve ser um se é em ingles seria Driver
         return rep.findById(id);
     }
 
@@ -27,7 +29,7 @@ public class MotoristaService {
         return rep.save(motorista);
     }
 
-    public List<Motorista> getMotoristasFake() {
+    public List<Motorista> getMotoristasFake() { //TODO: Apagar o código antigo
         List<Motorista> motoristas = new ArrayList<>();
 
         motoristas.add(new Motorista("Jabel", "Onix", "45451"));
