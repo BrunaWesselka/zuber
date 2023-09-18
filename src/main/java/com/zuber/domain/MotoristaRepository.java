@@ -1,7 +1,8 @@
 package com.zuber.domain;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MotoristaRepository extends CrudRepository<Motorista, Long> { //TODO: mudar para JPARepository e colocar a anotação @Repository  para o spring gerenciar essa classe
-
+@Repository
+public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
 }

@@ -25,8 +25,8 @@ public class MotoristasController {
     }
 
     @PostMapping
-    public String post (@RequestBody Motorista motorista){ //TODO: O nome do método deve fazer sentido para sua ação, no caso se estamos salvando um motorista poderia ser "cadastrarMotorista"
-        Motorista m = service.save(motorista);
+    public String post (@RequestBody Motorista cadastrarMotorista){
+        Motorista m = service.save(cadastrarMotorista);
         return "Motorista salvo com sucesso: " + m.getId();
     }
 
