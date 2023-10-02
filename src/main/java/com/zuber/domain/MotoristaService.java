@@ -1,13 +1,9 @@
 package com.zuber.domain;
+import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,6 +31,7 @@ public class MotoristaService {
             Motorista db = optional.get();
 
             db.setNome(motorista.getNome());
+
             db.setCnh(motorista.getCnh());
 
             buscarMotorista.save(db);
@@ -43,4 +40,12 @@ public class MotoristaService {
             throw new RuntimeException("Não foi possível atualizar o motorista");
         }
     }
+
+    public void delete(Long id){
+        Optional<Motorista> motorista = getMotoristasById(id);
+        if(motorista.isPresent()){
+            buscarMotorista.deleteById(id);
+        }
+    }
 }
+

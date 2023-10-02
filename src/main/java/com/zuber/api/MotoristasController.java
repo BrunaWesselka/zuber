@@ -36,4 +36,12 @@ public class MotoristasController {
         Motorista m = service.update(motorista, id);
         return "Carro atualizado com sucesso" + m.getId();
     }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") Long id) {
+
+        service.delete(id);
+
+        return "Motorista deletado com sucesso";
+    }
 }
