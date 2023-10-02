@@ -1,6 +1,7 @@
 package com.zuber.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,20 +14,33 @@ import java.util.Optional;
 public class MotoristaService {
 
     @Autowired
-    private MotoristaRepository rep; //TODO: Evitar nomes curtos assim, o nome deve ser claro, porque poderia ter 4 repositorios
-
-    //TODO: Ao longo do fluxo os nomes podem fazer  sentido
-    // Exemplo, se na controle chama "buscarMotoristas" na service pode ter o mesmo nome
+    private MotoristaRepository buscarMotorista;
     public Iterable<Motorista> getMotoristas() {
-        return rep.findAll();
+        return buscarMotorista.findAll();
     }
 
     public Optional<Motorista> getMotoristasById(Long id) { //TODO: O idioma deve ser um se é em ingles seria Driver
-        return rep.findById(id);
+        return buscarMotorista.findById(id);
     }
 
     public Motorista save (Motorista motorista){
-        return rep.save(motorista);
+        return buscarMotorista.save(motorista);
     }
 
+    public Motorista update(Motorista motorista, Long id){
+        Assert.notNull(id, "Não foi possível atualizar o motorista");
+
+        Optional<Motorista> optional = getMotoristasById(id);
+        if(optional.isPresent()) {
+            Motorista db = optional.get();
+
+            db.setNome(motorista.getNome());
+            db.setCnh(motorista.getCnh());
+
+            buscarMotorista.save(db);
+            return db;
+        } else {
+            throw new RuntimeException("Não foi possível atualizar o motorista");
+        }
+    }
 }
