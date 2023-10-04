@@ -1,11 +1,10 @@
 package com.zuber.api;
 
 import com.zuber.domain.Motorista;
-import com.zuber.domain.MotoristaService;
+import com.zuber.service.MotoristaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController

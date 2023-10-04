@@ -1,5 +1,6 @@
-package com.zuber.domain;
+package com.zuber.repository;
 
+import com.zuber.domain.Motorista;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,7 @@
-package com.zuber.domain;
-import jakarta.persistence.Column;
+package com.zuber.service;
+import com.zuber.domain.Motorista;
+import com.zuber.exception.MotoristaNaoEncontrado;
+import com.zuber.repository.MotoristaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -37,7 +39,7 @@ public class MotoristaService {
             buscarMotorista.save(db);
             return db;
         } else {
-            throw new RuntimeException("Não foi possível atualizar o motorista");
+            throw new MotoristaNaoEncontrado("Não foi possível atualizar o motorista " + id);
         }
     }
 
